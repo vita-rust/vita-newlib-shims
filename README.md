@@ -1,4 +1,4 @@
-# std-newlib - an umbrella repository for running Rust std on PlayStation Vita with newlib
+# std-newlib
 
 This repository hosts source code for crates intended to improve Rust std support for PlayStation Vita.
 
