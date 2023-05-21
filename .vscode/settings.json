@@ -2,6 +2,7 @@
     "cSpell.words": [
         "alloc",
         "bufsz",
+        "clippy",
         "dealloc",
         "fchown",
         "getppid",
@@ -17,6 +18,7 @@
         "POSIX",
         "readlink",
         "realloc",
+        "rustlang",
         "socketpair",
         "ssize",
         "structs"

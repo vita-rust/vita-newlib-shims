@@ -20,6 +20,7 @@ unsafe impl GlobalAlloc for SystemAllocWrapper {
 
     #[inline]
     unsafe fn dealloc(&self, ptr: *mut u8, _layout: std::alloc::Layout) {
+        #[allow(clippy::unit_arg)]
         std::hint::black_box(libc::free(ptr as *mut libc::c_void));
     }
 }
