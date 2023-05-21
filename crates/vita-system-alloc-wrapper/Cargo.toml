@@ -1,0 +1,7 @@
+[package]
+name = "vita-system-alloc-wrapper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libc = "0.2.144"

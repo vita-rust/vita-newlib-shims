@@ -1,0 +1,24 @@
+{
+    "cSpell.words": [
+        "alloc",
+        "bufsz",
+        "dealloc",
+        "fchown",
+        "getppid",
+        "lchown",
+        "libc",
+        "linkat",
+        "malloc",
+        "newdirfd",
+        "newlib",
+        "newpath",
+        "olddirfd",
+        "oldpath",
+        "POSIX",
+        "readlink",
+        "realloc",
+        "socketpair",
+        "ssize",
+        "structs"
+    ]
+}
