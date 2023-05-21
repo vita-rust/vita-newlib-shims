@@ -1,5 +1,8 @@
 # vita-newlib-shims
 
+[![Crates.io](https://img.shields.io/crates/v/vita-newlib-shims.svg)](https://crates.io/crates/vita-newlib-shims)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Standard library support for PlayStation Vita in Rust relies on Vita SDK newlib. Unfortunately, [not all](https://github.com/vitasdk/newlib/issues/86) of the POSIX functions are implemented in it, including those that Rust `std` relies on. 
 
 This repository aims to fix that by providing shims for the missing functions.
