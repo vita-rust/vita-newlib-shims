@@ -3,5 +3,10 @@ name = "vita-newlib-shims"
 version = "0.1.0"
 edition = "2021"
 
+license = "MIT"
+description = "Shims for libc functions not provided by Vita SDK newlib"
+homepage = "https://github.com/vita-rust/std-newlib/tree/main/crates/vita-newlib-shims"
+repository = "https://github.com/vita-rust/std-newlib"
+
 [dependencies]
 libc = "0.2.144"
