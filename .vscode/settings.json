@@ -4,6 +4,8 @@
         "bufsz",
         "clippy",
         "dealloc",
+        "direnv",
+        "envrc",
         "fchown",
         "getppid",
         "lchown",
@@ -16,11 +18,14 @@
         "olddirfd",
         "oldpath",
         "POSIX",
+        "pthread",
         "readlink",
         "realloc",
         "rustlang",
         "socketpair",
         "ssize",
-        "structs"
+        "structs",
+        "vitacompanion",
+        "VITASDK"
     ]
 }

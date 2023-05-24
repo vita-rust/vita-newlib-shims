@@ -1,0 +1,12 @@
+[workspace]
+members = ["./*"]
+exclude = ["target"]
+
+[profile.release]
+panic = 'abort'
+lto = true
+opt-level = 1
+
+[patch.crates-io]
+# Support for PS Vita is not released yet
+getrandom = { git = "https://github.com/rust-random/getrandom", branch = "master" }
