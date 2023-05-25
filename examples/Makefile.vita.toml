@@ -1,16 +1,17 @@
 [env]
 VITA_TARGET = "armv7-sony-vita-newlibeabihf"
+VITA_TARGET_SPEC = "${VITA_TARGET}"
 
 STATIC_DIR = "static"
 CARGO_TARGET_DIR = { script = ["echo ${CARGO_TARGET_DIR:=target}"] }
 CARGO_OUT_DIR = "${CARGO_TARGET_DIR}/${VITA_TARGET}/release"
+STD_FEATURES = "std,panic_abort"
 
 [tasks.vita-build]
 private = true
 description = "Build the project using `cargo`."
 command = "cargo"
-# env = {RUSTFLAGS = '-C target-feature=+crt-static'}
-args = ["build", "-Z", "build-std=std,panic_abort", "--target=${VITA_TARGET}", "--release", "-vv"]
+args = ["build", "-Z", "build-std=${STD_FEATURES}", "--target=${VITA_TARGET_SPEC}", "--release", "-vv"]
 
 [tasks.vita-strip]
 private = true

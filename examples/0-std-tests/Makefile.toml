@@ -1,0 +1,6 @@
+extend = "../Makefile.toml"
+
+[env]
+VITA_TITLE = "Rust Std Tests"
+VITA_TITLEID = "RUSTTESTS"
+BUILD_PROFILE= "tests"

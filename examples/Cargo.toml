@@ -6,6 +6,11 @@ exclude = ["target"]
 panic = 'abort'
 lto = true
 opt-level = 1
+codegen-units = 1
+
+# Without this flag it's guaranteed to crash.
+# Somebody smarter than me probably can dig into that
+debug-assertions = true
 
 [patch.crates-io]
 # Support for PS Vita is not released yet
