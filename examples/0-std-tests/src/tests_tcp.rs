@@ -1,5 +1,5 @@
 use anyhow::{anyhow, Context, Result};
-use std::net::{Shutdown, TcpListener, TcpStream};
+use std::{net::{Shutdown, TcpListener, TcpStream}, sync::atomic::{AtomicBool, Ordering}};
 use std::{
     io::{Read, Write},
     time::Duration,
@@ -11,8 +11,9 @@ use std::{
 
 use crate::assert;
 
-fn handle_client(mut stream: TcpStream, counter: Arc<Mutex<i32>>) {
-    let mut buffer = [0; 128];
+fn handle_client(mut stream: TcpStream, counter: Arc<Mutex<i32>>, should_end: Arc<AtomicBool>) {
+    let mut buffer = [0; 3];
+
     while match stream.read(&mut buffer) {
         Ok(size) => match &buffer[..size] {
             b"ADD" => {
@@ -22,14 +23,22 @@ fn handle_client(mut stream: TcpStream, counter: Arc<Mutex<i32>>) {
             }
             b"END" => {
                 stream.shutdown(Shutdown::Both).unwrap();
+                should_end.store(true, Ordering::SeqCst);
                 false
             }
-            _ => true,
+            _ => {
+                true
+            },
         },
-        Err(_) => {
+        Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+            thread::sleep(Duration::from_millis(1000));
+            true
+        }
+        Err(e) => {
             println!(
-                "An error occurred, terminating connection with {}",
-                stream.peer_addr().unwrap()
+                "An error occurred, terminating connection with {}. {:?}",
+                stream.peer_addr().unwrap(),
+                e
             );
             stream.shutdown(Shutdown::Both).unwrap();
             false
@@ -39,6 +48,7 @@ fn handle_client(mut stream: TcpStream, counter: Arc<Mutex<i32>>) {
 
 pub fn test_tcp() -> Result<()> {
     let counter = Arc::new(Mutex::new(0));
+    let should_end = Arc::new(AtomicBool::new(false));
     let (tx, rx) = mpsc::channel();
 
     let server_handle = {
@@ -46,19 +56,30 @@ pub fn test_tcp() -> Result<()> {
         let tx = tx.clone();
 
         thread::spawn(move || {
-            let listener = TcpListener::bind("localhost:12345").unwrap();
-            tx.send(()).unwrap(); // send message indicating server is ready
+            let listener = TcpListener::bind("localhost:12345").expect("Unable to bind to port");
+            listener.set_nonblocking(true).expect("unable to set non-blocking mode");
 
-            for stream in listener.incoming() {
-                match stream {
-                    Ok(stream) => {
+            tx.send(()).unwrap();
+
+            loop {
+                if should_end.load(Ordering::SeqCst) {
+                    break;
+                }
+
+                match listener.accept() {
+                    Ok((stream, _)) => {
                         let counter = Arc::clone(&counter);
+                        let should_end = Arc::clone(&should_end);
                         thread::spawn(move || {
-                            handle_client(stream, counter);
+                            handle_client(stream, counter, should_end);
                         });
                     }
+                    Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                        thread::sleep(Duration::from_millis(100));
+                        continue;
+                    }
                     Err(e) => {
-                        println!("Server failed: {}", e);
+                        println!("Failed: {}", e);
                     }
                 }
             }
