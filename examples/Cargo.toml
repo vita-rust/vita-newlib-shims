@@ -1,17 +1,16 @@
 [workspace]
 members = ["./*"]
 exclude = ["target"]
+resolver = "2"
 
 [profile.release]
-panic = 'abort'
+panic = 'unwind'
 lto = true
-opt-level = 1
-codegen-units = 1
-
-# Without this flag it's guaranteed to crash.
-# Somebody smarter than me probably can dig into that
-debug-assertions = true
 
 [patch.crates-io]
-# Support for PS Vita is not released yet
-getrandom = { git = "https://github.com/rust-random/getrandom", branch = "master" }
+mio = { git = "https://github.com/vita-rust/mio", branch = "vita" }
+tokio = { git = "https://github.com/vita-rust/tokio", branch = "vita" }
+libc = { git = "https://github.com/pheki/libc", branch = "add-vita-definitions" }
+ring = { git = "https://github.com/vita-rust/ring", branch = "v0.16.20-vita" }
+socket2053 = { git = "https://github.com/vita-rust/socket2", branch = "v0.5.3-vita", package = "socket2", version = "0.5.3" }
+socket2049 = { git = "https://github.com/vita-rust/socket2", branch = "v0.4.9-vita", package = "socket2", version = "0.4.9" }

@@ -4,9 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-vita-system-alloc-wrapper = "*"
-anyhow = "*"
-libc = "*"
+anyhow = "1.0.71"
+libc = "0.2.147"
 serde = { version = "1.0.160", features = ["derive"] }
 serde_json = "1.0.96"
 rand = "0.8.5"

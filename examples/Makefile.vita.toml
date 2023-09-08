@@ -5,12 +5,13 @@ VITA_TARGET_SPEC = "${VITA_TARGET}"
 STATIC_DIR = "static"
 CARGO_TARGET_DIR = { script = ["echo ${CARGO_TARGET_DIR:=target}"] }
 CARGO_OUT_DIR = "${CARGO_TARGET_DIR}/${VITA_TARGET}/release"
-STD_FEATURES = "std,panic_abort"
+STD_FEATURES = "std,panic_unwind"
 
 [tasks.vita-build]
 private = true
 description = "Build the project using `cargo`."
 command = "cargo"
+env = { RUSTFLAGS = "--cfg mio_unsupported_force_poll_poll --cfg mio_unsupported_force_waker_pipe", TARGET_CC = "arm-vita-eabi-gcc", TARGET_CXX = "arm-vita-eabi-g++"}
 args = ["build", "-Z", "build-std=${STD_FEATURES}", "--target=${VITA_TARGET_SPEC}", "--release", "-vv"]
 
 [tasks.vita-strip]

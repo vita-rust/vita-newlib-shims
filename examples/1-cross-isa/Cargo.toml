@@ -1,5 +1,5 @@
 [package]
-name = "vita-hello-world"
+name = "vita-example-cross-isa"
 version = "0.1.0"
 edition = "2021"
 

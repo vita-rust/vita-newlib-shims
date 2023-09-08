@@ -3,4 +3,14 @@ extend = "../Makefile.toml"
 [env]
 VITA_TITLE = "Rust Std Tests"
 VITA_TITLEID = "RUSTTESTS"
-BUILD_PROFILE= "tests"
+STD_FEATURES = "std,panic_unwind"
+
+[tasks.vita-build]
+private = true
+clear = true
+description = "Build the project using `cargo`."
+env = { RUSTFLAGS = "--cfg mio_unsupported_force_poll_poll --cfg mio_unsupported_force_waker_pipe", TARGET_CC = "arm-vita-eabi-gcc", TARGET_CXX = "arm-vita-eabi-g++"}
+script = ['''
+    ELF=$(cargo test -Z build-std=${STD_FEATURES} --target=${VITA_TARGET_SPEC} --release --no-run --message-format=json -q | jq -r 'select(.profile.test) | .executable')
+    cp "$ELF" "${CARGO_OUT_DIR}/${CARGO_MAKE_CRATE_NAME}.elf"
+''']
