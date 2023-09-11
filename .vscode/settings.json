@@ -31,5 +31,8 @@
         "structs",
         "vitacompanion",
         "VITASDK"
+    ],
+    "rust-targets.targets": [
+        "armv7-sony-vita-newlibeabihf",
     ]
 }

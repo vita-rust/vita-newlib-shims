@@ -1,0 +1,14 @@
+[package]
+name = "vita-example-http"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.11", default-features = false, features = ["json"] }
+tokio = { version = "1", features = ["macros", "rt", "net"] }
+oxhttp = {version = "0.1.7", features = [] }
+ureq = {version = "2.7.1", default-features = false, features = ["gzip"] }
+
+[package.metadata.vita]
+title_id = "RUSTTEST2"
+title_name = "Rust http test"

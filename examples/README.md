@@ -2,60 +2,52 @@
 
 These examples demonstrate how to build applications for Sony PlayStation Vita in Rut with various degrees of complexity.
 
-The examples use [cargo make](https://github.com/sagiegurari/cargo-make) for building, and require you to have [Vita SDK](https://vitasdk.org/) installed.
+## Prerequisites
 
-Also, you must have an environment variable `VITASDK` pointing to the location of Vita SDK, and your `PATH` must contain `$VITASDK/bin`, for example like that:
+- [Vita SDK](https://vitasdk.org/) must be installed, and `VITASDK` environment variable must be set to its location. You can add the environment variable to your `.bashrc` (or another configuration file if you are using a different shell), or you can use a tool like [direnv](https://direnv.net/), and put this in a `.envrc`.
+- [cargo-vita](https://github.com/vita-rust/cargo-vita) tool is required for building `vpk`` files. Run this command to install it:
+  ```sh
+  cargo +nightly install cargo-vita
+  ```
+- [PrincessLog](https://github.com/CelesteBlue-dev/PSVita-RE-tools/tree/master/PrincessLog/build) is required for monitoring stdout/stderr from your Vita.
+- [vitacompanion](https://github.com/devnoname120/vitacompanion) is required to upload `eboot.bin`/`vpk` files to Vita, and running commands.
 
-```sh
-export VITASDK=/opt/vitasdk
-export PATH=$VITASDK/bin:$PATH
-```
 
-You can add it to your `.bashrc` (or another configuration file if you are using a different shell), or you can use a tool like [direnv](https://direnv.net/), and put this in a `.envrc`.
 
 ## Building
 
-To build a `vpk` for every example, run from the `examples` folder:
+To build the `vpk` for every example run the following from the `examples` folder:
 
 ```sh
-cargo make vpk
+cargo vita -v build vpk --release
 ```
 
-To build a specific example, run this command from the specific sub-folder.
+To build the `vpk` for `std-tests` run:
+
+```sh
+cargo vita -v build vpk --release --package vita-std-tests --tests
+```
+
+
+To build the `vpk` for any specific package:
+
+```sh
+cargo vita -v build vpk --release --package {PACKAGE}
+```
+
 
 ## Running
 
-Uploading and running `vpk` can be automated. The examples provide some `cargo make` commands for that.
+You can automate uploading of `vpk` to `ux0:/download/`, or updating `eboot.bin` for already installed `vpk`.
 
-In order for it to work, you must have `curl` and `nc` installed on your system, as well as [vitacompanion](https://github.com/devnoname120/vitacompanion) and [PrincessLog](https://github.com/CelesteBlue-dev/PSVita-RE-tools/tree/master/PrincessLog/build) installed on your Vita.
-
-You will need to set up environment variables to connect to your Vita. Take a look at `Makefile.toml` in the examples.
-
-### Commands
-
-For the list of the commands see [Makefile.toml](./Makefile.toml)
-
-To upload the `vpk` to Vita using [vitacompanion](https://github.com/devnoname120/vitacompanion), run:
+To upload all `vpk` artifacts, us `--upload` flag of `vpk` subcommand:
 
 ```sh
-cargo make vita-upload
+cargo vita -v build vpk --upload --release
 ```
 
-This will upload the `vpk` to `ux0:/download` and open `VitaShell`. You will have to install the `vpk` manually.
-
-To run the installed `vpk` on your Vita, run:
+To update a specific `eboot.bin` and run it use `--update --run` flags of `eboot` subcommand. Keep in mind that `vpk` must be installed in order for that to work:
 
 ```sh
-cargo make vita-run
+cargo vita -v build eboot --update --run --release --package {PACKAGE}
 ```
-
-To capture stdout and stderr from your Vita, install and set up `PrincessLog` and run:
-
-```sh
-cargo make vita-log
-```
-
-To download and parse a core dump:
-
-```sh
-cargo make vita-coredump

@@ -1,5 +1,0 @@
-extend = "../Makefile.toml"
-
-[env]
-VITA_TITLE = "Rust Hello World 1"
-VITA_TITLEID = "RUSTTEST1"
