@@ -10,7 +10,7 @@ These examples demonstrate how to build applications for Sony PlayStation Vita i
   cargo +nightly install cargo-vita
   ```
 - [PrincessLog](https://github.com/CelesteBlue-dev/PSVita-RE-tools/tree/master/PrincessLog/build) is required for monitoring stdout/stderr from your Vita.
-- [vitacompanion](https://github.com/devnoname120/vitacompanion) is required to upload `eboot.bin`/`vpk` files to Vita, and running commands.
+- [vitacompanion](https://github.com/devnoname120/vitacompanion) is required to upload `eboot.bin`/`vpk` files to Vita, and run commands.
 
 
 
@@ -19,35 +19,35 @@ These examples demonstrate how to build applications for Sony PlayStation Vita i
 To build the `vpk` for every example run the following from the `examples` folder:
 
 ```sh
-cargo vita -v build vpk --release
+cargo vita build vpk --release
 ```
 
 To build the `vpk` for `std-tests` run:
 
 ```sh
-cargo vita -v build vpk --release --package vita-std-tests --tests
+cargo vita build vpk --release --package vita-std-tests --tests
 ```
 
 
 To build the `vpk` for any specific package:
 
 ```sh
-cargo vita -v build vpk --release --package {PACKAGE}
+cargo vita build vpk --release --package {PACKAGE}
 ```
 
 
 ## Running
 
-You can automate uploading of `vpk` to `ux0:/download/`, or updating `eboot.bin` for already installed `vpk`.
+You can automate uploading of `vpk` to `ux0:/download/`, or update `eboot.bin` for already installed `vpk`.
 
-To upload all `vpk` artifacts, us `--upload` flag of `vpk` subcommand:
+To upload all `vpk` artifacts, use `--upload` flag of `vpk` subcommand:
 
 ```sh
-cargo vita -v build vpk --upload --release
+cargo vita build vpk --upload --release
 ```
 
 To update a specific `eboot.bin` and run it use `--update --run` flags of `eboot` subcommand. Keep in mind that `vpk` must be installed in order for that to work:
 
 ```sh
-cargo vita -v build eboot --update --run --release --package {PACKAGE}
+cargo vita build eboot --update --run --release --package {PACKAGE}
 ```
