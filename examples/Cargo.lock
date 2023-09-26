@@ -1075,9 +1075,9 @@ dependencies = [
 
 [[package]]
 name = "vita-newlib-shims"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "98bb712d99cce60dcd8614d285fb7bc418d700604cb5f4222e4d20ed3b510daa"
+checksum = "82410d11383c2cb16bf587fadcfec7a79229271264ee8093ede6186a7e0b1d59"
 dependencies = [
  "libc",
 ]
