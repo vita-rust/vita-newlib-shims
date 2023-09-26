@@ -28,7 +28,7 @@ fn main() -> anyhow::Result<()> {
             // println!(">>> Ureq response: {:?}", body);
 
             println!(">>> Trying reqwest");
-            let body = reqwest::get("http://example.com").await?.text().await?;
+            let body = reqwest::get("https://example.com").await?.text().await?;
             println!(">>> Reqwest response: {:#?}", body);
 
             Ok(())
