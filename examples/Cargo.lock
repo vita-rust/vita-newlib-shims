@@ -46,15 +46,15 @@ dependencies = [
 
 [[package]]
 name = "base64"
-version = "0.21.3"
+version = "0.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "414dcefbc63d77c526a76b3afcf6fbb9b5e2791c19c3aa2297733208750c6e53"
+checksum = "9ba43ea6f343b788c8764558649e08df62f86c6ef251fdaeb1ffd010a9ae50a2"
 
 [[package]]
 name = "bumpalo"
-version = "3.13.0"
+version = "3.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a3e2c3daef883ecc1b5d58c15adae93470a91d425f3532ba1695849656af3fc1"
+checksum = "7f30e7476521f6f8af1a1c4c0b8cc94f0bee37d91763d0ca2665f299b6cd8aec"
 
 [[package]]
 name = "bytes"
@@ -308,8 +308,8 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.147"
-source = "git+https://github.com/pheki/libc?branch=add-vita-definitions#bacd8de344a451b55937e74050f312a7f453cf64"
+version = "0.2.148"
+source = "git+https://github.com/vita-rust/libc?branch=nonblock#b10664902074f53b425d18272592df7eb9435737"
 
 [[package]]
 name = "log"
@@ -341,7 +341,7 @@ dependencies = [
 [[package]]
 name = "mio"
 version = "0.8.8"
-source = "git+https://github.com/vita-rust/mio?branch=vita#cc18a2bbc328dce385b5b2c2951e8664c7387301"
+source = "git+https://github.com/vita-rust/mio?branch=vita#df7a1c3cbfd9aa952fa619f61d806603a2be9e8f"
 dependencies = [
  "libc",
  "wasi",
@@ -400,9 +400,9 @@ checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.66"
+version = "1.0.67"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "18fb31db3f9bddb2ea821cde30a9f70117e3f119938b5ee630b7403aa6e2ead9"
+checksum = "3d433d9f1a3e8c1263d9456598b16fec66f4acc9a74dacffd35c7bb09b3a1328"
 dependencies = [
  "unicode-ident",
 ]
@@ -514,9 +514,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.105"
+version = "1.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "693151e1ac27563d6dbcec9dee9fbd5da8539b20fa14ad3752b2e6d363ace360"
+checksum = "6b420ce6e3d8bd882e9b243c6eed35dbc9a6110c9769e74b584e0d68d1f20c65"
 dependencies = [
  "itoa",
  "ryu",
@@ -547,7 +547,7 @@ dependencies = [
 [[package]]
 name = "socket2"
 version = "0.4.9"
-source = "git+https://github.com/vita-rust/socket2?branch=v0.4.9-vita#1715f78d50efb667723e565b0e2cdba27e4f4db6"
+source = "git+https://github.com/vita-rust/socket2?branch=v0.4.9-vita#12c617dca2bd0017f2831afd5c6fc89459c76ed7"
 dependencies = [
  "libc",
  "winapi",
@@ -555,8 +555,8 @@ dependencies = [
 
 [[package]]
 name = "socket2"
-version = "0.5.3"
-source = "git+https://github.com/vita-rust/socket2?branch=v0.5.3-vita#7935ef6a131f8aae2ee47db168ed56bd348bdf55"
+version = "0.5.4"
+source = "git+https://github.com/vita-rust/socket2?branch=v0.5.3-vita#1f4865f2b23a2478f52e6c9087a5ae485824388e"
 dependencies = [
  "libc",
  "windows-sys",
@@ -564,9 +564,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.31"
+version = "2.0.37"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "718fa2415bcb8d8bd775917a1bf12a7931b6dfa890753378538118181e0cb398"
+checksum = "7303ef2c05cd654186cb250d29049a24840ca25d2747c25c0381c8d9e2f582e8"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -591,14 +591,14 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 [[package]]
 name = "tokio"
 version = "1.32.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#0948ce172dbc2deb4da3070bac151908b4ab0222"
+source = "git+https://github.com/vita-rust/tokio?branch=vita#79e084494b200d354b3352ff795c048efec65f44"
 dependencies = [
  "backtrace",
  "bytes",
  "libc",
  "mio",
  "pin-project-lite",
- "socket2 0.5.3",
+ "socket2 0.5.4",
  "tokio-macros",
  "windows-sys",
 ]
@@ -606,7 +606,7 @@ dependencies = [
 [[package]]
 name = "tokio-macros"
 version = "2.1.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#0948ce172dbc2deb4da3070bac151908b4ab0222"
+source = "git+https://github.com/vita-rust/tokio?branch=vita#79e084494b200d354b3352ff795c048efec65f44"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -615,9 +615,9 @@ dependencies = [
 
 [[package]]
 name = "tokio-util"
-version = "0.7.8"
+version = "0.7.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "806fe8c2c87eccc8b3267cbae29ed3ab2d0bd37fca70ab622e46aaa9375ddb7d"
+checksum = "1d68074620f57a0b21594d9735eb2e98ab38b17f80d3fcb189fca266771ca60d"
 dependencies = [
  "bytes",
  "futures-core",
@@ -667,9 +667,9 @@ checksum = "92888ba5573ff080736b3648696b70cafad7d250551175acbaa4e0385b3e1460"
 
 [[package]]
 name = "unicode-ident"
-version = "1.0.11"
+version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "301abaae475aa91687eb82514b328ab47a211a533026cb25fc3e519b86adfc3c"
+checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
 name = "unicode-normalization"
@@ -712,10 +712,21 @@ version = "0.1.0"
 name = "vita-example-http"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "oxhttp",
  "reqwest",
  "tokio",
  "ureq",
+ "vita-newlib-shims",
+]
+
+[[package]]
+name = "vita-newlib-shims"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "98bb712d99cce60dcd8614d285fb7bc418d700604cb5f4222e4d20ed3b510daa"
+dependencies = [
+ "libc",
 ]
 
 [[package]]
