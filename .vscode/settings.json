@@ -32,7 +32,5 @@
         "vitacompanion",
         "VITASDK"
     ],
-    "rust-targets.targets": [
-        "armv7-sony-vita-newlibeabihf",
-    ]
+    "rust-analyzer.cargo.target": "armv7-sony-vita-newlibeabihf"
 }
