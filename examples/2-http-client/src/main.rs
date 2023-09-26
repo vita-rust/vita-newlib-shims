@@ -3,6 +3,10 @@ use vita_newlib_shims as _;
 
 fn main() -> anyhow::Result<()> {
     std::env::set_var("RUST_BACKTRACE", "full");
+    // For openssl instead of rustls you must provide cert files.
+    // The shared cert files are located on a vs0 partition which is only accessible with unsafe apps.
+    // If you want to use openssl, you must either make your app unsafe or provide your own certs.
+    std::env::set_var("SSL_CERT_FILE", "vs0:data/external/cert/CA_LIST.cer");
 
     tokio::runtime::Builder::new_current_thread()
         .enable_all()
