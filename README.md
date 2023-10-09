@@ -3,7 +3,7 @@
 
 [![MIT/Apache 2.0](https://img.shields.io/badge/license-MIT%2FApache-blue.svg)](https://github.com/vita-rust/vita-newlib-shims#license)
 [![Crates.io](https://img.shields.io/crates/v/vita-newlib-shims.svg)](https://crates.io/crates/vita-newlib-shims)
-[![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/vita-rust/vita-newlib-shims/release.yml)](https://github.com/vita-rust/vita-newlib-shims/actions/workflows/release.yml)
+[![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/vita-rust/vita-newlib-shims/ci.yml)](https://github.com/vita-rust/vita-newlib-shims/actions/workflows/ci.yml)
 [![Current Release](https://img.shields.io/github/release/vita-rust/vita-newlib-shims.svg)](https://github.com/vita-rust/vita-newlib-shims/releases)
 [![Main Commits RSS Feed](https://img.shields.io/badge/rss-commits-ffa500?logo=rss)](https://github.com/vita-rust/vita-newlib-shims/commits/main.atom)
 

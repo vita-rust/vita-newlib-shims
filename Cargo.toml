@@ -5,11 +5,11 @@ edition = "2021"
 
 license = "MIT OR Apache-2.0"
 description = "Shims for libc functions not provided by Vita SDK newlib"
-homepage = "https://github.com/vita-rust/std/tree/main/crates/vita-newlib-shims"
-repository = "https://github.com/vita-rust/std"
+homepage = "https://github.com/vita-rust/vita-newlib-shims/tree/main/crates/vita-newlib-shims"
+repository = "https://github.com/vita-rust/vita-newlib-shims"
 
 authors = ["vita-sdk", "Nikolay Arhipov <n@arhipov.net>"]
-keywords = ["vita", "homebrew"]
+keywords = ["vitasdk", "psvita", "vita", "homebrew", "shim"]
 
 [features]
 pipe2 = []
