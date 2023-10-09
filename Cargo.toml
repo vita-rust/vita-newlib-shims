@@ -9,7 +9,7 @@ homepage = "https://github.com/vita-rust/vita-newlib-shims/tree/main/crates/vita
 repository = "https://github.com/vita-rust/vita-newlib-shims"
 
 authors = ["vita-sdk", "Nikolay Arhipov <n@arhipov.net>"]
-keywords = ["vita", "homebrew"]
+keywords = ["vitasdk", "psvita", "vita", "homebrew", "shim"]
 
 [features]
 pipe2 = []
