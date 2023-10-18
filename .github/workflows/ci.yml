@@ -21,9 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: "`cargo check`"
-        run: cargo check --all-targets --all-features
+        run: cargo hack check -Z build-std=std,panic_abort --feature-powerset --examples --bins --tests --target armv7-sony-vita-newlibeabihf
       - name: "`cargo clippy`"
-        run: cargo clippy --all-targets --all-features
+        run: cargo hack clippy -Z build-std=std,panic_abort --feature-powerset --examples --bins --tests --target armv7-sony-vita-newlibeabihf
       - name: Run cargo doc
         run: DOCS_RS=1 RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --all-features --target armv7-sony-vita-newlibeabihf -Z build-std
       - name: Upload docs

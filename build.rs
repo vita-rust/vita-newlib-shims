@@ -1,6 +1,6 @@
 use std::{collections::HashMap, path::Path, process::Command};
 
-const FEATURES: &[&str] = &["socketpair", "pipe2"];
+const FEATURES: &[&str] = &["socketpair", "pipe2", "fcntl"];
 
 fn main() {
     if std::env::var("DOCS_RS").is_ok() {

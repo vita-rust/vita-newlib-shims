@@ -1,6 +1,4 @@
-.vscode/*
-!.vscode/settings.json
-
+.vscode
 target/
 .DS_Store
 .tmp
