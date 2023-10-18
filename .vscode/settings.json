@@ -1,3 +1,4 @@
 {
-    "rust-analyzer.cargo.target": "armv7-sony-vita-newlibeabihf"
+    "rust-analyzer.cargo.target": "armv7-sony-vita-newlibeabihf",
+    "rust-analyzer.cargo.features": ["fcntl", "pipe2", "socketpair"]
 }
