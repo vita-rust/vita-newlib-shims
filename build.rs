@@ -1,6 +1,10 @@
 use std::{collections::HashMap, path::Path, process::Command};
 
-const FEATURES: &[&str] = &["socketpair", "pipe2", "fcntl"];
+const FEATURES: &[(&str, &str)] = &[
+    ("socketpair", "socketpair"),
+    ("pipe2", "pipe2"),
+    ("_fcntl_r", "fcntl"),
+];
 
 fn main() {
     if std::env::var("DOCS_RS").is_ok() {
@@ -33,14 +37,14 @@ fn main() {
         .collect::<HashMap<_, _>>();
 
     for line in nm_result {
-        for (feature, enabled) in &mut features {
-            if line == format!("00000000 T {}", feature) {
+        for ((symbol, _), enabled) in &mut features {
+            if line == format!("00000000 T {}", symbol) {
                 *enabled = true;
             }
         }
     }
 
-    for (feature, _) in features.iter().filter(|(_, enabled)| !**enabled) {
+    for ((_, feature), _) in features.iter().filter(|(_, enabled)| !**enabled) {
         println!("cargo:rustc-cfg=feature=\"{}\"", feature);
     }
 }
